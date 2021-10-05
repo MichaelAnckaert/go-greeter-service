@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: greeter-service
-        image: michaelanckaert/go-greeter-service:v1
+        image: michaelanckaert/go-greeter-service:v2
         ports:
         - containerPort: 8080
 
