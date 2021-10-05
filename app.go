@@ -8,10 +8,11 @@ import (
 
 type Message struct {
 	Message string `json:"message"`
+	Version string `json:"version"`
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	message := Message{Message: "Hello, world. This is the Greeter service!"}
+	message := Message{Message: "Hello, world. This is the Greeter service!", Version: "v3"}
 	data, err := json.Marshal(message)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

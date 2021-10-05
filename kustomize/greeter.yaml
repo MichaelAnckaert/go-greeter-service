@@ -1,18 +1,41 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: greeter-service-deployment
+  name: greeter-service-v2
   labels:
-    app: greeter-service
+    app: greeter-service-v2
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
-      app: greeter-service
+      app: greeter-service-v2
   template:
     metadata:
       labels:
-        app: greeter-service
+        app: greeter-service-v2
+    spec:
+      containers:
+      - name: greeter-service
+        image: michaelanckaert/go-greeter-service:v2
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greeter-service-v2
+  labels:
+    app: greeter-service-v2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: greeter-service-v2
+  template:
+    metadata:
+      labels:
+        app: greeter-service-v2
     spec:
       containers:
       - name: greeter-service
@@ -25,10 +48,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: greeter-service
+  name: greeter-service-v3
 spec:
   selector:
-    app: greeter-service
+    app: greeter-service-v3
   type: NodePort
   ports:
     - protocol: TCP
