@@ -24,22 +24,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: greeter-service-v2
+  name: greeter-service-v3
   labels:
-    app: greeter-service-v2
+    app: greeter-service-v3
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: greeter-service-v2
+      app: greeter-service-v3
   template:
     metadata:
       labels:
-        app: greeter-service-v2
+        app: greeter-service-v3
     spec:
       containers:
       - name: greeter-service
-        image: michaelanckaert/go-greeter-service:v2
+        image: michaelanckaert/go-greeter-service:v3
         ports:
         - containerPort: 8080
 
